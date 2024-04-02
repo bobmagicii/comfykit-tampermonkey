@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ComfyKit
-// @version      1.1.0
+// @version      1.1.1
 // @namespace    bobmagicii
 // @author       bobmagicii
 // @description  Extra keybindings for ComfyUI.
@@ -205,6 +205,37 @@ class ComfyKit {
 	////////////////////////////////
 	////////////////////////////////
 
+	static Realboot() {
+
+		let failcount = 0;
+		let bootup = null;
+		let ck = null;
+
+		// todo: return a promise to return the instance.
+
+		bootup = function() {
+
+			if(window.app && window.graph) {
+				ck = new ComfyKit;
+				return;
+			}
+
+			if(failcount < 10) {
+				failcount += 1;
+				console.log(`[ComfyKit] bootup attempt #${failcount}`);
+				setTimeout(bootup, 1000);
+				return;
+			}
+
+			console.log('[ComfyKit] gave up trying to grapple onto comfyui.');
+			return;
+		};
+
+		setTimeout(bootup, 500);
+
+		return;
+	};
+
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -212,30 +243,6 @@ class ComfyKit {
 
 (function() {
 	'use strict';
-
-	let failcount = 0;
-	let bootup = null;
-	let ck = null;
-
-	bootup = function() {
-
-		if(window.app && window.graph) {
-			ck = new ComfyKit;
-			return;
-		}
-
-		if(failcount < 10) {
-			failcount += 1;
-			console.log(`[ComfyKit] bootup attempt #${failcount}`);
-			setTimeout(bootup, 1000);
-			return;
-		}
-
-		console.log('[ComfyKit] gave up trying to grapple onto comfyui.');
-		return;
-	};
-
-	setTimeout(bootup, 500);
+	ComfyKit.Realboot();
 	return;
 })();
-
