@@ -5,6 +5,8 @@
 // @author       bobmagicii
 // @description  Extra keybindings for ComfyUI.
 // @include      /https?:\/\/(.+?):8188\/(.*?)/
+// @downloadURL  https://raw.githubusercontent.com/bobmagicii/comfykit-tampermonkey/master/comfykit-tampermonkey.js
+// @updateURL    https://raw.githubusercontent.com/bobmagicii/comfykit-tampermonkey/master/comfykit-tampermonkey.js
 // @grant        none
 // ==/UserScript==
 
