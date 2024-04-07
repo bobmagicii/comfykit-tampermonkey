@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         ComfyKit
-// @version      1.1.1
+// @version      1.1.2
 // @namespace    bobmagicii
 // @author       bobmagicii
 // @description  Extra keybindings for ComfyUI.
