@@ -19,7 +19,7 @@
 // ALT+Q: RESET COMFYUI VIEWPORT
 // go to 0, 0 with a zoom of 1.0
 
-// ALT+Z: CANCEL CURRENT JOB
+// ALT+K: CANCEL CURRENT JOB
 // does some stuff to try and cancel the current job magically.
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -64,7 +64,7 @@ class ComfyKit {
 
 		this.keys = {
 			viewportReset:  { alt: true, key: 'q', func: this.doViewportReset.bind(this) },
-			queueCancelCur: { alt: true, key: 'z', func: this.doQueueCancelCur.bind(this) }
+			queueCancelCur: { alt: true, key: 'k', func: this.doQueueCancelCur.bind(this) }
 		};
 
 		return;
@@ -191,6 +191,12 @@ class ComfyKit {
 			}
 
 			////////
+
+			// comfy apparently rerenders this at a billion fps so at
+			// most you might see a red flash.
+
+			cancelBtn.parentNode.parentNode.style.backgroundColor = '#aa0000';
+			cancelBtn.parentNode.parentNode.style.color = '#f0f0f0';
 
 			cancelBtn.click();
 
